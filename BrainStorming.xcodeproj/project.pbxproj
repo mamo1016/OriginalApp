@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		045730AE1EA5F16D00438415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730AD1EA5F16D00438415 /* AppDelegate.swift */; };
+		045730B01EA5F16D00438415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730AF1EA5F16D00438415 /* ViewController.swift */; };
+		045730B31EA5F16D00438415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045730B11EA5F16D00438415 /* Main.storyboard */; };
+		045730B51EA5F16D00438415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045730B41EA5F16D00438415 /* Assets.xcassets */; };
+		045730B81EA5F16D00438415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045730B61EA5F16D00438415 /* LaunchScreen.storyboard */; };
+		045730C31EA5F16D00438415 /* BrainStormingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730C21EA5F16D00438415 /* BrainStormingTests.swift */; };
+		045730CE1EA5F16D00438415 /* BrainStormingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730CD1EA5F16D00438415 /* BrainStormingUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		045730BF1EA5F16D00438415 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 045730A21EA5F16D00438415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 045730A91EA5F16D00438415;
+			remoteInfo = BrainStorming;
+		};
+		045730CA1EA5F16D00438415 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 045730A21EA5F16D00438415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 045730A91EA5F16D00438415;
+			remoteInfo = BrainStorming;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		045730AA1EA5F16D00438415 /* BrainStorming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainStorming.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		045730AD1EA5F16D00438415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		045730AF1EA5F16D00438415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		045730B21EA5F16D00438415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		045730B41EA5F16D00438415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		045730B71EA5F16D00438415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		045730B91EA5F16D00438415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045730BE1EA5F16D00438415 /* BrainStormingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainStormingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		045730C21EA5F16D00438415 /* BrainStormingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainStormingTests.swift; sourceTree = "<group>"; };
+		045730C41EA5F16D00438415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		045730C91EA5F16D00438415 /* BrainStormingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrainStormingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		045730CD1EA5F16D00438415 /* BrainStormingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainStormingUITests.swift; sourceTree = "<group>"; };
+		045730CF1EA5F16D00438415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		045730A71EA5F16D00438415 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045730BB1EA5F16D00438415 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045730C61EA5F16D00438415 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		045730A11EA5F16D00438415 = {
+			isa = PBXGroup;
+			children = (
+				045730AC1EA5F16D00438415 /* BrainStorming */,
+				045730C11EA5F16D00438415 /* BrainStormingTests */,
+				045730CC1EA5F16D00438415 /* BrainStormingUITests */,
+				045730AB1EA5F16D00438415 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		045730AB1EA5F16D00438415 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				045730AA1EA5F16D00438415 /* BrainStorming.app */,
+				045730BE1EA5F16D00438415 /* BrainStormingTests.xctest */,
+				045730C91EA5F16D00438415 /* BrainStormingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		045730AC1EA5F16D00438415 /* BrainStorming */ = {
+			isa = PBXGroup;
+			children = (
+				045730AD1EA5F16D00438415 /* AppDelegate.swift */,
+				045730AF1EA5F16D00438415 /* ViewController.swift */,
+				045730B11EA5F16D00438415 /* Main.storyboard */,
+				045730B41EA5F16D00438415 /* Assets.xcassets */,
+				045730B61EA5F16D00438415 /* LaunchScreen.storyboard */,
+				045730B91EA5F16D00438415 /* Info.plist */,
+			);
+			path = BrainStorming;
+			sourceTree = "<group>";
+		};
+		045730C11EA5F16D00438415 /* BrainStormingTests */ = {
+			isa = PBXGroup;
+			children = (
+				045730C21EA5F16D00438415 /* BrainStormingTests.swift */,
+				045730C41EA5F16D00438415 /* Info.plist */,
+			);
+			path = BrainStormingTests;
+			sourceTree = "<group>";
+		};
+		045730CC1EA5F16D00438415 /* BrainStormingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				045730CD1EA5F16D00438415 /* BrainStormingUITests.swift */,
+				045730CF1EA5F16D00438415 /* Info.plist */,
+			);
+			path = BrainStormingUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		045730A91EA5F16D00438415 /* BrainStorming */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 045730D21EA5F16D00438415 /* Build configuration list for PBXNativeTarget "BrainStorming" */;
+			buildPhases = (
+				045730A61EA5F16D00438415 /* Sources */,
+				045730A71EA5F16D00438415 /* Frameworks */,
+				045730A81EA5F16D00438415 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BrainStorming;
+			productName = BrainStorming;
+			productReference = 045730AA1EA5F16D00438415 /* BrainStorming.app */;
+			productType = "com.apple.product-type.application";
+		};
+		045730BD1EA5F16D00438415 /* BrainStormingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 045730D51EA5F16D00438415 /* Build configuration list for PBXNativeTarget "BrainStormingTests" */;
+			buildPhases = (
+				045730BA1EA5F16D00438415 /* Sources */,
+				045730BB1EA5F16D00438415 /* Frameworks */,
+				045730BC1EA5F16D00438415 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				045730C01EA5F16D00438415 /* PBXTargetDependency */,
+			);
+			name = BrainStormingTests;
+			productName = BrainStormingTests;
+			productReference = 045730BE1EA5F16D00438415 /* BrainStormingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		045730C81EA5F16D00438415 /* BrainStormingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 045730D81EA5F16D00438415 /* Build configuration list for PBXNativeTarget "BrainStormingUITests" */;
+			buildPhases = (
+				045730C51EA5F16D00438415 /* Sources */,
+				045730C61EA5F16D00438415 /* Frameworks */,
+				045730C71EA5F16D00438415 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				045730CB1EA5F16D00438415 /* PBXTargetDependency */,
+			);
+			name = BrainStormingUITests;
+			productName = BrainStormingUITests;
+			productReference = 045730C91EA5F16D00438415 /* BrainStormingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		045730A21EA5F16D00438415 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "上田　護";
+				TargetAttributes = {
+					045730A91EA5F16D00438415 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+					};
+					045730BD1EA5F16D00438415 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 045730A91EA5F16D00438415;
+					};
+					045730C81EA5F16D00438415 = {
+						CreatedOnToolsVersion = 8.3.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 045730A91EA5F16D00438415;
+					};
+				};
+			};
+			buildConfigurationList = 045730A51EA5F16D00438415 /* Build configuration list for PBXProject "BrainStorming" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 045730A11EA5F16D00438415;
+			productRefGroup = 045730AB1EA5F16D00438415 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				045730A91EA5F16D00438415 /* BrainStorming */,
+				045730BD1EA5F16D00438415 /* BrainStormingTests */,
+				045730C81EA5F16D00438415 /* BrainStormingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		045730A81EA5F16D00438415 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045730B81EA5F16D00438415 /* LaunchScreen.storyboard in Resources */,
+				045730B51EA5F16D00438415 /* Assets.xcassets in Resources */,
+				045730B31EA5F16D00438415 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045730BC1EA5F16D00438415 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045730C71EA5F16D00438415 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		045730A61EA5F16D00438415 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045730B01EA5F16D00438415 /* ViewController.swift in Sources */,
+				045730AE1EA5F16D00438415 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045730BA1EA5F16D00438415 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045730C31EA5F16D00438415 /* BrainStormingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		045730C51EA5F16D00438415 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				045730CE1EA5F16D00438415 /* BrainStormingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		045730C01EA5F16D00438415 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 045730A91EA5F16D00438415 /* BrainStorming */;
+			targetProxy = 045730BF1EA5F16D00438415 /* PBXContainerItemProxy */;
+		};
+		045730CB1EA5F16D00438415 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 045730A91EA5F16D00438415 /* BrainStorming */;
+			targetProxy = 045730CA1EA5F16D00438415 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		045730B11EA5F16D00438415 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				045730B21EA5F16D00438415 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		045730B61EA5F16D00438415 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				045730B71EA5F16D00438415 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		045730D01EA5F16D00438415 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		045730D11EA5F16D00438415 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		045730D31EA5F16D00438415 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BrainStorming/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.default.BrainStorming;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		045730D41EA5F16D00438415 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BrainStorming/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.default.BrainStorming;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		045730D61EA5F16D00438415 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BrainStormingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.default.BrainStormingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainStorming.app/BrainStorming";
+			};
+			name = Debug;
+		};
+		045730D71EA5F16D00438415 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BrainStormingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.default.BrainStormingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BrainStorming.app/BrainStorming";
+			};
+			name = Release;
+		};
+		045730D91EA5F16D00438415 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = BrainStormingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.default.BrainStormingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BrainStorming;
+			};
+			name = Debug;
+		};
+		045730DA1EA5F16D00438415 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = BrainStormingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.default.BrainStormingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = BrainStorming;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		045730A51EA5F16D00438415 /* Build configuration list for PBXProject "BrainStorming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045730D01EA5F16D00438415 /* Debug */,
+				045730D11EA5F16D00438415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		045730D21EA5F16D00438415 /* Build configuration list for PBXNativeTarget "BrainStorming" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045730D31EA5F16D00438415 /* Debug */,
+				045730D41EA5F16D00438415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		045730D51EA5F16D00438415 /* Build configuration list for PBXNativeTarget "BrainStormingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045730D61EA5F16D00438415 /* Debug */,
+				045730D71EA5F16D00438415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		045730D81EA5F16D00438415 /* Build configuration list for PBXNativeTarget "BrainStormingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				045730D91EA5F16D00438415 /* Debug */,
+				045730DA1EA5F16D00438415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 045730A21EA5F16D00438415 /* Project object */;
+}
