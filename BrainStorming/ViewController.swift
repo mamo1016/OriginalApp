@@ -5,7 +5,7 @@
 //  Created by 上田　護 on 2017/04/18.
 //  Copyright © 2017年 上田　護. All rights reserved.
 //
-
+//OriginalApp
 import UIKit
 
 class ViewController: UIViewController {
