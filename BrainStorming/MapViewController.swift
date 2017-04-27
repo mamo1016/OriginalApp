@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 var preX: Double = 0
 var preY: Double = 0
 
@@ -15,12 +16,31 @@ var newX: Double = 0
 var newY: Double = 0
 var moveX: Double = 0
 var moveY: Double = 0
+var i: Int = 0
 
 class MapViewController: UIViewController {
 
+    var playerView: UIView!
+ 
     override func viewDidLoad() {
+
         super.viewDidLoad()
+        
+        playerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+//        i += 1
+       
+        //背景色の設定
         self.view.backgroundColor = UIColor.cyan
+
+        
+        
+        
+        
+        
+    
+      
+        
+        
         
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
@@ -66,6 +86,12 @@ class MapViewController: UIViewController {
         let preDx = touchEvent.previousLocation(in: self.view).x
         let preDy = touchEvent.previousLocation(in: self.view).y
         
+        
+        //プレイヤーのドラッグするフレーム生成
+        playerView.backgroundColor = UIColor.gray
+        self.view.addSubview(playerView)
+        self.playerView.center = CGPoint(x: preDx, y: preDy)
+        
 //        // ドラッグしたx座標の移動距離
 //        var dx = newDx - preX
 //        
@@ -108,6 +134,8 @@ class MapViewController: UIViewController {
 //        print(dx)
 
     }
+    
+    
 
     
 
