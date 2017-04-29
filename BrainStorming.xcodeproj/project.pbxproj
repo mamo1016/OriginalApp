@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		045382B41EAF289D0073B522 /* TestDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045382B31EAF289D0073B522 /* TestDraw.swift */; };
+		0453832C1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0453832B1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 */; };
 		045730AE1EA5F16D00438415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730AD1EA5F16D00438415 /* AppDelegate.swift */; };
 		045730B01EA5F16D00438415 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730AF1EA5F16D00438415 /* ViewController.swift */; };
 		045730B31EA5F16D00438415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 045730B11EA5F16D00438415 /* Main.storyboard */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		045382B31EAF289D0073B522 /* TestDraw.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDraw.swift; sourceTree = "<group>"; };
+		0453832B1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_maoudamashii_onepoint12.mp3; sourceTree = "<group>"; };
 		045730AA1EA5F16D00438415 /* BrainStorming.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainStorming.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045730AD1EA5F16D00438415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		045730AF1EA5F16D00438415 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				04E053541EAC830A00452FE9 /* startViewController.swift */,
 				04E053561EAC8DBE00452FE9 /* MapViewController.swift */,
 				045382B31EAF289D0073B522 /* TestDraw.swift */,
+				0453832B1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 */,
 			);
 			path = BrainStorming;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				045730B81EA5F16D00438415 /* LaunchScreen.storyboard in Resources */,
 				045730B51EA5F16D00438415 /* Assets.xcassets in Resources */,
 				045730B31EA5F16D00438415 /* Main.storyboard in Resources */,
+				0453832C1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
