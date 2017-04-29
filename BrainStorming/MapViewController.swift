@@ -73,31 +73,30 @@ class MapViewController: UIViewController, UITextFieldDelegate {
 
 
         
-        //-------------------------------------------------
-        // 三角形 -------------------------------------
-        // UIBezierPath のインスタンス生成
-        let line = UIBezierPath();
-        // 起点
-        line.move(to: CGPoint(x: 450, y: 60));
-        // 帰着点
-        line.addLine(to: CGPoint(x: 400, y: 300));
-        line.addLine(to: CGPoint(x: 600, y: 280));
-        // ラインを結ぶ
-        line.close()
-        // 色の設定
-        UIColor.red.setStroke()
-        // ライン幅
-        line.lineWidth = 4
-        // 描画
-        line.stroke();
-        
-        
-
-        //---------------------------------------------------
+//        //-------------------------------------------------
+//        // 三角形 -------------------------------------
+//        // UIBezierPath のインスタンス生成
+//        let line = UIBezierPath();
+//        // 起点
+//        line.move(to: CGPoint(x: 450, y: 60));
+//        // 帰着点
+//        line.addLine(to: CGPoint(x: 400, y: 300));
+//        line.addLine(to: CGPoint(x: 600, y: 280));
+//        // ラインを結ぶ
+//        line.close()
+//        // 色の設定
+//        UIColor.red.setStroke()
+//        // ライン幅
+//        line.lineWidth = 4
+//        // 描画
+//        line.stroke();
+//        
+//        
+//
+//        //---------------------------------------------------
        
         
         
-        playerView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
@@ -134,8 +133,10 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         preY = Double(preDy)
         
         
+        playerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+
         // Labelを生成
-        myLabel = UILabel(frame: CGRect(x: preDx,y: preDy,width: 100,height: 50))
+        myLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 100,height: 50))
         myLabel.backgroundColor = UIColor(red: 0.261, green: 0.737, blue: 0.561, alpha: 1.0)
         //myLabel.center = self.view.center
         myLabel.text = "new word"
@@ -204,49 +205,49 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         
         
         
-        // UITextFieldを作成する.
-        myTextField = UITextField(frame: CGRect(x: 0,y: 0,width: 200,height: 50))
-        
-        // 表示する文字を代入する.
-        myTextField.text = "Input new word"
-        
-        // Delegateを設定する.
-        myTextField.delegate = self
-        
-        // 枠を表示する.
-        myTextField.borderStyle = UITextBorderStyle.roundedRect
-        
-        // UITextFieldの表示する位置を設定する.
-        myTextField.layer.position = CGPoint(x:self.view.bounds.width/2,y:100);
-        
-        // Viewに追加する.
-        self.view.addSubview(myTextField)
-        
-        
-        /*
-         UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
-         */
-        func textFieldDidBeginEditing(textField: UITextField){
-            print("textFieldDidBeginEditing:" + textField.text!)
-        }
-        
-        /*
-         UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
-         */
-        func textFieldShouldEndEditing(textField: UITextField) -> Bool {
-            print("textFieldShouldEndEditing:" + textField.text!)
-            
-            return true
-        }
-        
-        /*
-         改行ボタンが押された際に呼ばれるデリゲートメソッド.
-         */
-        func textFieldShouldReturn(textField: UITextField) -> Bool {
-            textField.resignFirstResponder()
-            
-            return true
-        }
+//        // UITextFieldを作成する.
+//        myTextField = UITextField(frame: CGRect(x: 0,y: 0,width: 200,height: 50))
+//        
+//        // 表示する文字を代入する.
+//        myTextField.text = "Input new word"
+//        
+//        // Delegateを設定する.
+//        myTextField.delegate = self
+//        
+//        // 枠を表示する.
+//        myTextField.borderStyle = UITextBorderStyle.roundedRect
+//        
+//        // UITextFieldの表示する位置を設定する.
+//        myTextField.layer.position = CGPoint(x:self.view.bounds.width/2,y:100);
+//        
+//        // Viewに追加する.
+//        self.view.addSubview(myTextField)
+//        
+//        
+//        /*
+//         UITextFieldが編集された直後に呼ばれるデリゲートメソッド.
+//         */
+//        func textFieldDidBeginEditing(textField: UITextField){
+//            print("textFieldDidBeginEditing:" + textField.text!)
+//        }
+//        
+//        /*
+//         UITextFieldが編集終了する直前に呼ばれるデリゲートメソッド.
+//         */
+//        func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+//            print("textFieldShouldEndEditing:" + textField.text!)
+//            
+//            return true
+//        }
+//        
+//        /*
+//         改行ボタンが押された際に呼ばれるデリゲートメソッド.
+//         */
+//        func textFieldShouldReturn(textField: UITextField) -> Bool {
+//            textField.resignFirstResponder()
+//            
+//            return true
+//        }
         
         
         
