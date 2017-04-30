@@ -19,7 +19,13 @@ var moveY: Double = 0
 var i: Float = 0.0
 var j: Float = 0.0
 var frame: UIView!
+let layer = CAShapeLayer()
 
+
+let pi = CGFloat(M_PI)
+let start:CGFloat = 0.0 // 開始の角度
+let end :CGFloat = pi * 2 // 終了の角度
+let path: UIBezierPath = UIBezierPath();
 
 var screenCenter: Int!
 
@@ -74,6 +80,7 @@ class MapViewController: UIViewController, UITextFieldDelegate {
 
         
 //        //-------------------------------------------------
+        
 //        // 三角形 -------------------------------------
 //        // UIBezierPath のインスタンス生成
 //        let line = UIBezierPath();
@@ -102,24 +109,16 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
         
-        //最初のフレーム生成
+        //四角フレーム生成
         firstView = UIView(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         firstView.backgroundColor = UIColor.red
         self.firstView.center = CGPoint(x: screenWidth / 2, y: screenHeight / 2)
-        
-        //ビューを描画
-        self.view.addSubview(firstView)
-
     }
     
 
     // 画面にタッチで呼ばれるメソッド
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("touch")
-
-        
-
-        
         
         // タッチイベントを取得
         let touchEvent = touches.first!
@@ -132,48 +131,62 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         preX = Double(preDx)
         preY = Double(preDy)
         
-        
         playerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 
         // Labelを生成
         myLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 100,height: 50))
         myLabel.backgroundColor = UIColor(red: 0.261, green: 0.737, blue: 0.561, alpha: 1.0)
-        //myLabel.center = self.view.center
         myLabel.text = "new word"
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.textColor = UIColor.white
+        //myLabel.center = self.view.center
         
+        
+        //レイヤー、パスの生成
+        layer.fillColor = UIColor.orange.cgColor
+        layer.path = path.cgPath
+        path.close()
 
-        
+
     }
+
+    
+    
     
     //　ドラッグ時に呼ばれるメソッド
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         print("drag")
         
-
-        
         // タッチイベントを取得
         let touchEvent = touches.first!
-
-//        var newDx = Double(touchEvent.location(in: self.view).x)
-//        var newDy = Double(touchEvent.location(in: self.view).y)
         
         let preDx = touchEvent.previousLocation(in: self.view).x
         let preDy = touchEvent.previousLocation(in: self.view).y
         
-        
+        //円フレームの生成
+        path.addArc(withCenter: CGPoint(x: preDx,y: preDy), radius: 50, startAngle: start, endAngle: end, clockwise: true) // 円弧
+        //円フレームを追加
+        self.view.layer.addSublayer(layer)
+      
         //プレイヤーのドラッグするフレーム生成
         playerView.backgroundColor = UIColor.gray
         self.playerView.center = CGPoint(x: preDx, y: preDy)
         self.myLabel.center = CGPoint(x: preDx, y: preDy)
-
-        //ビューを描画
-        self.view.addSubview(playerView)
-        // Labelをviewに追加
-        self.view.addSubview(myLabel)
-
         
+//        //円フレームの生成
+//        path.addArc(withCenter: CGPoint(x: preX,y: preY), radius: 50, startAngle: start, endAngle: end, clockwise: true) // 円弧
+
+//        let path = UIBezierPath(ovalIn: CGRect(x: 0,y: 0,width: width,height: height))
+
+
+
+        //四角フレームを描画
+//        self.view.addSubview(playerView)
+        // Labelを追加
+        self.view.addSubview(myLabel)
+//        //円フレームを追加
+//        self.view.layer.addSublayer(layer)
+
         
         
 //        // ドラッグしたx座標の移動距離
@@ -188,6 +201,12 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     // ドラッグ終了時に呼ばれるメソッド
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 
+
+        
+        
+        
+        
+        
         // タッチイベントを取得
         let touchEvent = touches.first!
         //ドラッグ終了時の座標
@@ -269,6 +288,27 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    
+//    // AutoLayoutによる位置の設定がviewWillAppear以降で行われるので、その後にアニメーション処理を追記
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        
+//        // ①アニメーションするプロパティを指定し、オブジェクト作成
+//        let moveToCenter = CABasicAnimation(keyPath: "position.x")
+//        
+//        // ②アニメーションの初期値を指定する
+//        moveToCenter.fromValue = -view.bounds.size.width/2
+//        
+//        // ③アニメーションの終了時の値を指定する
+//        moveToCenter.toValue = view.bounds.size.width/2
+//        
+//        // ④アニメーションの時間を指定する
+//        moveToCenter.duration = 2.0
+//        
+//        // ⑤アニメーションをlayerに追加する
+//        self.view.layer.add(moveToCenter, forKey: nil)
+//    }
+//
     
     
     
