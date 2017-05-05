@@ -18,6 +18,7 @@
 		045730CE1EA5F16D00438415 /* BrainStormingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730CD1EA5F16D00438415 /* BrainStormingUITests.swift */; };
 		04E053551EAC830A00452FE9 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E053541EAC830A00452FE9 /* startViewController.swift */; };
 		04E053571EAC8DBE00452FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E053561EAC8DBE00452FE9 /* MapViewController.swift */; };
+		04F6A5DE1EB6D1130099EF25 /* MyShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6A5DD1EB6D1130099EF25 /* MyShapeLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		045730CF1EA5F16D00438415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E053541EAC830A00452FE9 /* startViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		04E053561EAC8DBE00452FE9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		04F6A5DD1EB6D1130099EF25 /* MyShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyShapeLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				04E053561EAC8DBE00452FE9 /* MapViewController.swift */,
 				045382B31EAF289D0073B522 /* TestDraw.swift */,
 				0453832B1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 */,
+				04F6A5DD1EB6D1130099EF25 /* MyShapeLayer.swift */,
 			);
 			path = BrainStorming;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				045382B41EAF289D0073B522 /* TestDraw.swift in Sources */,
 				045730B01EA5F16D00438415 /* ViewController.swift in Sources */,
 				045730AE1EA5F16D00438415 /* AppDelegate.swift in Sources */,
+				04F6A5DE1EB6D1130099EF25 /* MyShapeLayer.swift in Sources */,
 				04E053551EAC830A00452FE9 /* startViewController.swift in Sources */,
 				04E053571EAC8DBE00452FE9 /* MapViewController.swift in Sources */,
 			);

@@ -25,15 +25,24 @@ let layer = CAShapeLayer()
 let pi = CGFloat(M_PI)
 let start:CGFloat = 0.0 // 開始の角度
 let end :CGFloat = pi * 2 // 終了の角度
-let path: UIBezierPath = UIBezierPath();
+var path: UIBezierPath = UIBezierPath();
 
 var screenCenter: Int!
 
-class MapViewController: UIViewController, UITextFieldDelegate {
+class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
     var myLabel: UILabel!
     //テキストボックスフィールドの変数
     private var myTextField: UITextField!
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //選択したレイヤーをいれておく
+    private var selectLayer:CALayer!
+    
+    //最後にタッチされた座標をいれておく
+    private var touchLastPoint:CGPoint!
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    
     
     //--------------------------------------
     
@@ -68,42 +77,36 @@ class MapViewController: UIViewController, UITextFieldDelegate {
     var playerView: UIView!
     var firstView: UIView!
    
+    
+    //設定メソッド
     override func viewDidLoad() {
+
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        let width = self.view.bounds.width
+        let height = self.view.bounds.height
+
+        //丸を生成するボタン
+        let ovalBtn = UIButton()
+        ovalBtn.frame = CGRect(x:0,y:0,width:100,height:50)
+        ovalBtn.center = CGPoint(x:width / 3,y:height - 30)
+        ovalBtn.addTarget(self, action: #selector(MapViewController.ovalBtnTapped(sender:)), for: .touchUpInside)
+        ovalBtn.setTitle("丸",for:.normal)
+//        ovalBtn.backgroundColor = UIColor.green
+        self.view.addSubview(ovalBtn)
+        
+        //丸を描く
+        let oval = MyShapeLayer()
+        oval.frame = CGRect(x:30,y:30,width:80,height:80)
+        oval.drawOval(lineWidth:1)
+        self.view.layer.addSublayer(oval)
+        
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         
         super.viewDidLoad()
         
-        
-        
         //背景色の設定
         self.view.backgroundColor = UIColor.cyan
-
-
-        
-//        //-------------------------------------------------
-        
-//        // 三角形 -------------------------------------
-//        // UIBezierPath のインスタンス生成
-//        let line = UIBezierPath();
-//        // 起点
-//        line.move(to: CGPoint(x: 450, y: 60));
-//        // 帰着点
-//        line.addLine(to: CGPoint(x: 400, y: 300));
-//        line.addLine(to: CGPoint(x: 600, y: 280));
-//        // ラインを結ぶ
-//        line.close()
-//        // 色の設定
-//        UIColor.red.setStroke()
-//        // ライン幅
-//        line.lineWidth = 4
-//        // 描画
-//        line.stroke();
-//        
-//        
-//
-//        //---------------------------------------------------
-       
-        
-        
         
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
@@ -115,6 +118,35 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         self.firstView.center = CGPoint(x: screenWidth / 2, y: screenHeight / 2)
     }
     
+    
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
+    /************** Button Tapped ***********/
+    func ovalBtnTapped(sender:UIButton){
+        //丸を描く
+        let oval = MyShapeLayer()
+        oval.frame = CGRect(x:30,y:30,width:80,height:80)
+        oval.drawOval(lineWidth:1)
+        self.view.layer.addSublayer(oval)
+    }
+    
+    /************** Touch Action ****************/
+    func hitLayer(touch:UITouch) -> CALayer{
+        var touchPoint:CGPoint = touch.location(in:self.view)
+        touchPoint = self.view.layer.convert(touchPoint, to: self.view.layer.superlayer)
+        return self.view.layer.hitTest(touchPoint)!
+    }
+    func selectLayerFunc(layer:CALayer?) {
+        if((layer == self.view.layer) || (layer == nil)){
+            selectLayer = nil
+            return
+        }
+        selectLayer = layer
+    }
+
+    
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
 
     // 画面にタッチで呼ばれるメソッド
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -122,6 +154,19 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         
         // タッチイベントを取得
         let touchEvent = touches.first!
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        selectLayer = nil
+        //タッチを取得
+        let touch:UITouch = touches.first!
+        //タッチした場所にあるレイヤーを取得
+        let layer:CALayer = hitLayer(touch: touch)
+        //タッチされた座標を取得
+        let touchPoint:CGPoint = touch.location(in: self.view)
+        //最後にタッチされた場所に座標を入れて置く
+        touchLastPoint = touchPoint
+        //選択されたレイヤーをselectLayerにいれる
+        self.selectLayerFunc(layer:layer)
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         // ドラッグ前の座標, Swift 1.2 から
         let preDx = touchEvent.previousLocation(in: self.view).x
@@ -130,23 +175,27 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         //タッチした座標を取得
         preX = Double(preDx)
         preY = Double(preDy)
-        
-        playerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
 
+        //円フレームの生成
+        path.addArc(withCenter: CGPoint(x: preX,y: preY), radius: 50, startAngle: start, endAngle: end, clockwise: true) // 円弧
+//        //レイヤー、パスの生成
+//        layer.fillColor = UIColor.orange.cgColor
+//        layer.path = path.cgPath
+//        path.close()
+//        playerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+//        //円フレームを追加
+//        self.view.layer.addSublayer(layer)
+
+        
         // Labelを生成
         myLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 100,height: 50))
-        myLabel.backgroundColor = UIColor(red: 0.261, green: 0.737, blue: 0.561, alpha: 1.0)
+//        myLabel.backgroundColor = UIColor(red: 0.261, green: 0.737, blue: 0.561, alpha: 1.0)
         myLabel.text = "new word"
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.textColor = UIColor.white
-        //myLabel.center = self.view.center
-        
-        
-        //レイヤー、パスの生成
-        layer.fillColor = UIColor.orange.cgColor
-        layer.path = path.cgPath
-        path.close()
-
+  
+//        // Labelを追加
+//        self.view.addSubview(myLabel)
 
     }
 
@@ -162,15 +211,37 @@ class MapViewController: UIViewController, UITextFieldDelegate {
         
         let preDx = touchEvent.previousLocation(in: self.view).x
         let preDy = touchEvent.previousLocation(in: self.view).y
+        //タッチした座標を取得
+        preX = Double(preDx)
+        preY = Double(preDy)
         
-        //円フレームの生成
-        path.addArc(withCenter: CGPoint(x: preDx,y: preDy), radius: 50, startAngle: start, endAngle: end, clockwise: true) // 円弧
-        //円フレームを追加
-        self.view.layer.addSublayer(layer)
+        
+        let touchPoint:CGPoint = touchEvent.location(in:self.view)
+        let touchOffsetPoint:CGPoint = CGPoint(x:touchPoint.x - touchLastPoint.x,
+                                               y:touchPoint.y - touchLastPoint.y)
+        touchLastPoint = touchPoint
+        
+        if (selectLayer != nil){
+            //hitしたレイヤーがあった場合
+            let px:CGFloat = selectLayer.position.x
+            let py:CGFloat = selectLayer.position.y
+            //レイヤーを移動させる
+            CATransaction.begin()
+            CATransaction.setDisableActions(true)
+            selectLayer.position = CGPoint(x:px + touchOffsetPoint.x,y:py + touchOffsetPoint.y)
+            selectLayer.borderWidth = 0.0
+            selectLayer.borderColor = UIColor.green.cgColor
+            CATransaction.commit()
+        }
+        
+//        //円フレームの生成
+//        path.addArc(withCenter: CGPoint(x: preDx,y: preDy), radius: 50, startAngle: start, endAngle: end, clockwise: true) // 円弧
+//        //円フレームを追加
+//        self.view.layer.addSublayer(layer)
       
-        //プレイヤーのドラッグするフレーム生成
-        playerView.backgroundColor = UIColor.gray
-        self.playerView.center = CGPoint(x: preDx, y: preDy)
+//        //プレイヤーのドラッグするフレーム生成
+//        playerView.backgroundColor = UIColor.gray
+//        self.playerView.center = CGPoint(x: preDx, y: preDy)
         self.myLabel.center = CGPoint(x: preDx, y: preDy)
         
 //        //円フレームの生成
@@ -182,8 +253,6 @@ class MapViewController: UIViewController, UITextFieldDelegate {
 
         //四角フレームを描画
 //        self.view.addSubview(playerView)
-        // Labelを追加
-        self.view.addSubview(myLabel)
 //        //円フレームを追加
 //        self.view.layer.addSublayer(layer)
 
