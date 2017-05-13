@@ -23,6 +23,7 @@ var j: Float = 0.0
 var frame: UIView!
 let layer = CAShapeLayer()
 var newFrameLimit: Double = 0
+let line = MyShapeLayer()
 
 
 let pi = CGFloat(M_PI)
@@ -32,6 +33,11 @@ var path: UIBezierPath = UIBezierPath();
 
 var screenCenter: Int!
 var frameAmount: Int = 0
+
+
+
+
+
 
 class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
     
@@ -72,7 +78,14 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         alert.addAction(cancelAction)
         
         present(alert, animated: true, completion: nil)
+        
+        
+     
+//        self.view.addSubview(myLabel)
     }
+    
+    
+    
     var playerView: UIView!
     var firstView: UIView!
     
@@ -81,19 +94,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
     override func viewDidLoad() {
         //背景色の設定
         self.view.backgroundColor = UIColor.cyan
-        
-        
-//        let shapeLayer = CAShapeLayer()
-//        
-//        let uiPath = UIBezierPath()
-//        uiPath.move(to: CGPoint(x:5,y:5))       // ここから
-//        uiPath.addLine(to: CGPoint(x:150,y:15))  // ここまで線を引く
-//        
-//        shapeLayer.strokeColor = UIColor.blue.cgColor  // 微妙に分かりにくい。色は要指定。
-//        shapeLayer.path = uiPath.cgPath  // なんだこれは
-//        
-//        // 作成したCALayerを画面に追加
-//        view.layer.addSublayer(shapeLayer)
         
         
         
@@ -113,21 +113,16 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         oval.drawOval(lineWidth:1)
         self.view.layer.addSublayer(oval)
         
-//        //四角を描く
-//        let rect = MyShapeLayer()
-//        rect.frame = CGRect(x:screenWidth/2, y:screenHeight/2,width:70,height:60)
-//        rect.drawRect(lineWidth:1)
-//        self.view.layer.addSublayer(rect)
-
-        
         // Labelを生成
-        myLabel = UILabel(frame: CGRect(x: screenWidth/2,y: screenHeight/2,width: 100,height: 50))
+
+        myLabel = UILabel(frame: CGRect(x: screenWidth/2 - 50,y: screenHeight/2 - 25,width: 100,height: 50))
         myLabel.text = "new word"
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.textColor = UIColor.white
-//        self.view.addSubview(myLabel)
-
+        self.view.addSubview(myLabel)
         super.viewDidLoad()
+        tap()
+        
         
 
         
@@ -147,11 +142,16 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             return
         }
         selectLayer = layer
+      
+//        if(selectLayer == CAShapeLayer){
+//            
+//        }
     }
     
     // 画面にタッチで呼ばれるメソッド
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+
         // タッチイベントを取得
         let touchEvent = touches.first!
         selectLayer = nil
@@ -182,13 +182,15 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.textColor = UIColor.white
         
+       
+        
         //レイヤーの内側がタッチされた時
         if (selectLayer != nil){
             //タイマー開始
             timer = Timer.scheduledTimer(timeInterval: 0.01,target: self,selector: #selector(self.timerCounter),userInfo: nil,repeats: true)
             //グローバル変数に格納
             startTime = Date()
-            
+            j=1
         }
         
     }
@@ -222,9 +224,13 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             selectLayer.borderColor = UIColor.green.cgColor
             CATransaction.commit()
             self.myLabel.center = CGPoint(x:px + touchOffsetPoint.x,y:py + touchOffsetPoint.y)
+            
+
+           
         }
         
-        print(oldX,oldY)
+        
+        //print(oldX,oldY)
         
     }
     
@@ -248,15 +254,19 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             timer.invalidate()
         }
         frameAmount = 0
-        if newFrameLimit < 0.3 {
+        if newFrameLimit < 0.6 && j==1 {
             tap()
+            j=0
         }
+        //print(newFrameLimit)
+        
         //線を描く
-        let line = MyShapeLayer()
         line.frame = CGRect(x:0, y:0,width:0,height:0)
         line.drawRect(lineWidth:1, startPointX: CGFloat(preX), startPointY: CGFloat(preY),endPointX: CGFloat(oldX),
                       endPointY: CGFloat(oldY))
         self.view.layer.addSublayer(line)
+        
+        newFrameLimit = 0
 
         
     }
@@ -283,8 +293,8 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         
         newFrameLimit = currentTime
         
-        //1秒以上タッチされた時 &　ドラッグが大きいとき
-        if ( newFrameLimit >= 1.0 && newFrameLimit <= 100 && frameAmount < 1 && fabs(moveX) < 20 && fabs(moveY) < 20){
+        //1秒以上タッチされた時 &　ドラッグが大きいとき新しい円フレームを追加
+        if ( newFrameLimit >= 1.0 && newFrameLimit <= 100 && frameAmount < 1 && fabs(moveX) < 20 && fabs(moveY) < 20 && j == 1){
             let oval = MyShapeLayer()
             oval.frame = CGRect(x:preX - 40,y:preY - 40,width:80,height:80)//新しい円フレームの設定
             oval.drawOval(lineWidth:1)
@@ -293,10 +303,14 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             frameAmount += 1
             self.view.layer.addSublayer(oval)//円フレームの追加
             selectLayer = oval
+            j=0
+          
 
             
         }
+
         
     }
+    
 
 }

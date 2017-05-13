@@ -48,6 +48,7 @@ class MyShapeLayer: CALayer {
         ovalShapeLayer.lineWidth = lineWidth
         ovalShapeLayer.path = UIBezierPath(ovalIn: CGRect(x:0, y:0, width:self.frame.width, height: self.frame.height)).cgPath
         self.addSublayer(ovalShapeLayer)
+        
 
     }
     
