@@ -42,10 +42,11 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
     private var selectLayer:CALayer!
     //最後にタッチされた座標をいれておく
     private var touchLastPoint:CGPoint!
-    let ovalBtn = UIButton()
     
     weak var timer: Timer!
     var startTime = Date()
+    
+    
     
     
     @IBOutlet weak var label: UILabel!
@@ -78,6 +79,24 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
     
     //設定メソッド
     override func viewDidLoad() {
+        //背景色の設定
+        self.view.backgroundColor = UIColor.cyan
+        
+        
+//        let shapeLayer = CAShapeLayer()
+//        
+//        let uiPath = UIBezierPath()
+//        uiPath.move(to: CGPoint(x:5,y:5))       // ここから
+//        uiPath.addLine(to: CGPoint(x:150,y:15))  // ここまで線を引く
+//        
+//        shapeLayer.strokeColor = UIColor.blue.cgColor  // 微妙に分かりにくい。色は要指定。
+//        shapeLayer.path = uiPath.cgPath  // なんだこれは
+//        
+//        // 作成したCALayerを画面に追加
+//        view.layer.addSublayer(shapeLayer)
+        
+        
+        
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
@@ -86,31 +105,34 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         let height = self.view.bounds.height
         
         
-        ovalBtn.frame = CGRect(x:0,y:0,width:40,height:40)        //丸を生成するボタン
-        ovalBtn.addTarget(self, action: #selector(MapViewController.ovalBtnTapped(sender:)), for: .touchUpInside)              //アクションを設定
-        ovalBtn.setTitle("丸",for:.normal)
-
+        
+        
         //丸を描く
         let oval = MyShapeLayer()
         oval.frame = CGRect(x:screenWidth/2 - 40,y:screenHeight/2 - 40,width:80,height:80)
         oval.drawOval(lineWidth:1)
         self.view.layer.addSublayer(oval)
         
+//        //四角を描く
+//        let rect = MyShapeLayer()
+//        rect.frame = CGRect(x:screenWidth/2, y:screenHeight/2,width:70,height:60)
+//        rect.drawRect(lineWidth:1)
+//        self.view.layer.addSublayer(rect)
+
+        
+        // Labelを生成
+        myLabel = UILabel(frame: CGRect(x: screenWidth/2,y: screenHeight/2,width: 100,height: 50))
+        myLabel.text = "new word"
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.textColor = UIColor.white
+//        self.view.addSubview(myLabel)
+
         super.viewDidLoad()
         
-        //背景色の設定
-        self.view.backgroundColor = UIColor.cyan
+
         
     }
 
-    //ボタンがタップされた時
-    func ovalBtnTapped(sender:UIButton){
-        //丸を描く
-        let oval = MyShapeLayer()
-        oval.frame = CGRect(x: screenCenter - 40,y:screenCenter - 40,width:80,height:80)
-        oval.drawOval(lineWidth:1)
-        self.view.layer.addSublayer(oval)
-    }
     
     //画面がタッチされた時
     func hitLayer(touch:UITouch) -> CALayer{
@@ -153,8 +175,9 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         oval.frame = CGRect(x:preX - 40,y:preY - 40,width:80,height:80)//新しい円フレームの設定
         oval.drawOval(lineWidth:1)
         
+        
         // Labelを生成
-        myLabel = UILabel(frame: CGRect(x: preX,y: preY,width: 100,height: 50))
+        myLabel = UILabel(frame: CGRect(x: 0,y: 0,width: 100,height: 50))
         myLabel.text = "new word"
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.textColor = UIColor.white
@@ -181,15 +204,14 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         preY = Double(preDy)
         moveX = oldX - preX
         moveY = oldY - preY
-        print(moveX)
+        //print(moveX)
         
         let touchPoint:CGPoint = touchEvent.location(in:self.view)
         let touchOffsetPoint:CGPoint = CGPoint(x:touchPoint.x - touchLastPoint.x,
                                                y:touchPoint.y - touchLastPoint.y)
         touchLastPoint = touchPoint
         
-        if (selectLayer != nil){
-            //hitしたレイヤーがあった場合
+        if (selectLayer != nil){//hitしたレイヤーがあった場合
             let px:CGFloat = selectLayer.position.x
             let py:CGFloat = selectLayer.position.y
             //レイヤーを移動させる
@@ -199,13 +221,11 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             selectLayer.borderWidth = 0.0
             selectLayer.borderColor = UIColor.green.cgColor
             CATransaction.commit()
-            
-            ovalBtn.center = CGPoint(x:px + touchOffsetPoint.x,y:py + touchOffsetPoint.y)
             self.myLabel.center = CGPoint(x:px + touchOffsetPoint.x,y:py + touchOffsetPoint.y)
-            
         }
         
-//        self.myLabel.center = CGPoint(x: preDx, y: preDy)
+        print(oldX,oldY)
+        
     }
     
     // タッチ終了時に呼ばれるメソッド
@@ -231,20 +251,24 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         if newFrameLimit < 0.3 {
             tap()
         }
+        //線を描く
+        let line = MyShapeLayer()
+        line.frame = CGRect(x:0, y:0,width:0,height:0)
+        line.drawRect(lineWidth:1, startPointX: CGFloat(preX), startPointY: CGFloat(preY),endPointX: CGFloat(oldX),
+                      endPointY: CGFloat(oldY))
+        self.view.layer.addSublayer(line)
+
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    
     func timerCounter() {
         // タイマー開始からのインターバル時間
         let currentTime = Date().timeIntervalSince(startTime)
-        
         // fmod() 余りを計算
         let minute = (Int)(fmod((currentTime/60), 60))
         // currentTime/60 の余り
@@ -264,17 +288,15 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             let oval = MyShapeLayer()
             oval.frame = CGRect(x:preX - 40,y:preY - 40,width:80,height:80)//新しい円フレームの設定
             oval.drawOval(lineWidth:1)
-            self.view.layer.addSublayer(oval)//円フレームの追加
-            selectLayer = oval
             // Labelを追加
             self.view.addSubview(myLabel)
             frameAmount += 1
+            self.view.layer.addSublayer(oval)//円フレームの追加
+            selectLayer = oval
+
             
         }
         
-        
     }
-    
-    
-    
+
 }
