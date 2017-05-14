@@ -28,6 +28,14 @@ class MyShapeLayer: CALayer {
 //        line.path = UIBezierPath(rect:CGRect(x:0,y:0,width:self.frame.width,height:self.frame.height)).cgPath
 //        self.addSublayer(line)
         
+
+        
+        
+        
+        
+        
+        
+        
         
         let shapeLayer = CAShapeLayer()
         let uiPath = UIBezierPath()
@@ -41,7 +49,7 @@ class MyShapeLayer: CALayer {
     }
     
     //円を描くメソッド
-    func drawOval(lineWidth:CGFloat){
+    func drawOval(lineWidth:CGFloat/*,startPointX:CGFloat,startPointY:CGFloat,endPointX: CGFloat,endPointY:CGFloat*/){
         let ovalShapeLayer = CAShapeLayer()
         ovalShapeLayer.strokeColor = UIColor.blue.cgColor
         ovalShapeLayer.fillColor = UIColor.clear.cgColor
@@ -49,6 +57,16 @@ class MyShapeLayer: CALayer {
         ovalShapeLayer.path = UIBezierPath(ovalIn: CGRect(x:0, y:0, width:self.frame.width, height: self.frame.height)).cgPath
         self.addSublayer(ovalShapeLayer)
         
+//        let shapeLayer = CAShapeLayer()
+//        let uiPath = UIBezierPath()
+//        uiPath.move(to: CGPoint(x:startPointX,y:startPointY))       // ここから
+//        uiPath.addLine(to: CGPoint(x:endPointX,y:endPointY))  // ここまで線を引く
+//        shapeLayer.lineWidth = lineWidth
+//        shapeLayer.strokeColor = UIColor.blue.cgColor  // 微妙に分かりにくい。色は要指定。
+//        shapeLayer.path = uiPath.cgPath
+//        // 作成したCALayerを画面に追加
+//        self.addSublayer(shapeLayer)
+
 
     }
     

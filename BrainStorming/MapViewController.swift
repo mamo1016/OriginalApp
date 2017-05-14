@@ -20,6 +20,8 @@ var moveX: Double = 0
 var moveY: Double = 0
 var i: Float = 0.0
 var j: Float = 0.0
+var k: Int = 0
+var m: Int = 0
 var frame: UIView!
 let layer = CAShapeLayer()
 var newFrameLimit: Double = 0
@@ -33,10 +35,6 @@ var path: UIBezierPath = UIBezierPath();
 
 var screenCenter: Int!
 var frameAmount: Int = 0
-
-
-
-
 
 
 class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate{
@@ -55,16 +53,35 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
     
     
     
+    
     @IBOutlet weak var label: UILabel!
+
+    var words:[String] = []
+    var i:Int = 0
+    var coordinateX = [Double]()
+    var coordinateY = [Double]()
+
     
     func tap(/*sender: AnyObject*/) {
+        // Screen Size の取得
+        let screenWidth = self.view.bounds.width
+        let screenHeight = self.view.bounds.height
         
         let alert = UIAlertController(title: "文字を入力", message: "最初の文字を入力してください", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "完了", style: .default) { (action:UIAlertAction!) -> Void in
-            
             // 入力したテキストをコンソールに表示
             let textField = alert.textFields![0] as UITextField
-            self.myLabel.text = textField.text
+            self.words += [""]
+            self.words[self.i].append(textField.text!)
+            self.myLabel = UILabel(frame: CGRect(x: 0, y: 0,width: 100,height: 50))
+            self.myLabel.center = CGPoint(x: screenWidth/2, y: screenHeight/2)
+            self.myLabel.textAlignment = NSTextAlignment.center
+            self.myLabel.textColor = UIColor.white
+            self.myLabel.text = self.words[self.i]//textField.text
+            
+            // Labelを追加
+            self.view.addSubview(self.myLabel)
+            self.i += 1
         }
         
         let cancelAction = UIAlertAction(title: "キャンセル", style: .default) { (action:UIAlertAction!) -> Void in
@@ -110,13 +127,14 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         //丸を描く
         let oval = MyShapeLayer()
         oval.frame = CGRect(x:screenWidth/2 - 40,y:screenHeight/2 - 40,width:80,height:80)
-        oval.drawOval(lineWidth:1)
+        oval.drawOval(lineWidth:1/*, startPointX: 100, startPointY: 100, endPointX: 300, endPointY: 200*/)
         self.view.layer.addSublayer(oval)
         
         // Labelを生成
 
         myLabel = UILabel(frame: CGRect(x: screenWidth/2 - 50,y: screenHeight/2 - 25,width: 100,height: 50))
-        myLabel.text = "new word"
+        //myLabel.text = "new word"
+  //      self.myLabel.text = self.words[0]
         myLabel.textAlignment = NSTextAlignment.center
         myLabel.textColor = UIColor.white
         self.view.addSubview(myLabel)
@@ -173,7 +191,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         
         let oval = MyShapeLayer()
         oval.frame = CGRect(x:preX - 40,y:preY - 40,width:80,height:80)//新しい円フレームの設定
-        oval.drawOval(lineWidth:1)
+        oval.drawOval(lineWidth:1/*, startPointX: 100, startPointY: 100, endPointX: 300, endPointY: 200*/)
         
         
         // Labelを生成
@@ -206,7 +224,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         preY = Double(preDy)
         moveX = oldX - preX
         moveY = oldY - preY
-        //print(moveX)
         
         let touchPoint:CGPoint = touchEvent.location(in:self.view)
         let touchOffsetPoint:CGPoint = CGPoint(x:touchPoint.x - touchLastPoint.x,
@@ -230,8 +247,6 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         }
         
         
-        //print(oldX,oldY)
-        
     }
     
     // タッチ終了時に呼ばれるメソッド
@@ -240,8 +255,8 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         // タッチイベントを取得
         let touchEvent = touches.first!
         //ドラッグ終了時の座標
-        var newDx = Double(touchEvent.location(in: self.view).x)
-        var newDy = Double(touchEvent.location(in: self.view).y)
+        let newDx = Double(touchEvent.location(in: self.view).x)
+        let newDy = Double(touchEvent.location(in: self.view).y)
         
         // ドラッグしたx座標の移動距離
         var dx = newDx - preX
@@ -254,19 +269,33 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             timer.invalidate()
         }
         frameAmount = 0
-        if newFrameLimit < 0.6 && j==1 {
+        if newFrameLimit < 0.3 && j==1 {
             tap()
             j=0
         }
-        //print(newFrameLimit)
+        
+        
+        newFrameLimit = 0
+//        print(newDx)
+        
+//        coordinate += [oldX]
+//        coordinate[0].append(oldX)
+//        print(coordinate[0])
+        
+
+        if m == 1 {
+            coordinateX += [newDx]
+            coordinateY += [newDy]
+            print( (coordinateX[k]), (coordinateY[k]))
+            k += 1
+            m = 0
+        }
         
         //線を描く
         line.frame = CGRect(x:0, y:0,width:0,height:0)
         line.drawRect(lineWidth:1, startPointX: CGFloat(preX), startPointY: CGFloat(preY),endPointX: CGFloat(oldX),
                       endPointY: CGFloat(oldY))
         self.view.layer.addSublayer(line)
-        
-        newFrameLimit = 0
 
         
     }
@@ -297,15 +326,14 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         if ( newFrameLimit >= 1.0 && newFrameLimit <= 100 && frameAmount < 1 && fabs(moveX) < 20 && fabs(moveY) < 20 && j == 1){
             let oval = MyShapeLayer()
             oval.frame = CGRect(x:preX - 40,y:preY - 40,width:80,height:80)//新しい円フレームの設定
-            oval.drawOval(lineWidth:1)
+            oval.drawOval(lineWidth:1/*, startPointX: CGFloat(preX), startPointY: CGFloat(preY), endPointX: CGFloat(oldX), endPointY: CGFloat(oldY)*/)
             // Labelを追加
             self.view.addSubview(myLabel)
             frameAmount += 1
             self.view.layer.addSublayer(oval)//円フレームの追加
             selectLayer = oval
             j=0
-          
-
+            m=1
             
         }
 
