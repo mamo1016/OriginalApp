@@ -57,6 +57,25 @@ class MyShapeLayer: CALayer {
         ovalShapeLayer.path = UIBezierPath(ovalIn: CGRect(x:0, y:0, width:self.frame.width, height: self.frame.height)).cgPath
         self.addSublayer(ovalShapeLayer)
         
+      
+        
+        
+        let pi = CGFloat(M_PI)
+        let start:CGFloat = 0.0 // 開始の角度
+        let end :CGFloat = pi*2 // 終了の角度
+        
+        let path: UIBezierPath = UIBezierPath();
+        //path.move(to: CGPoint(x:0, y:0))
+        path.addArc(withCenter: CGPoint(x:frame.width/2, y:frame.height/2), radius: 40, startAngle: start, endAngle: end, clockwise: true) // 円弧
+        
+        let layer = CAShapeLayer()
+        layer.fillColor = UIColor.orange.cgColor
+        layer.path = path.cgPath
+        
+        self.addSublayer(layer)
+
+        
+        
 //        let shapeLayer = CAShapeLayer()
 //        let uiPath = UIBezierPath()
 //        uiPath.move(to: CGPoint(x:startPointX,y:startPointY))       // ここから

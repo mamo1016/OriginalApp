@@ -58,15 +58,19 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
 
     var words:[String] = []
     var i:Int = 0
-    var coordinateX = [Double]()
-    var coordinateY = [Double]()
+    var coordinateX = [Double]([0])
+    var coordinateY = [Double]([0])
 
     
     func tap(/*sender: AnyObject*/) {
+        
         // Screen Size の取得
         let screenWidth = self.view.bounds.width
         let screenHeight = self.view.bounds.height
-        
+        coordinateX += [Double(screenWidth/2)]
+        coordinateY += [Double(screenHeight/2)]
+        //print(screenWidth)
+
         let alert = UIAlertController(title: "文字を入力", message: "最初の文字を入力してください", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "完了", style: .default) { (action:UIAlertAction!) -> Void in
             // 入力したテキストをコンソールに表示
@@ -160,6 +164,9 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             return
         }
         selectLayer = layer
+        if(selectLayer == layer){
+            print(selectLayer)
+        }
       
 //        if(selectLayer == CAShapeLayer){
 //            
@@ -276,7 +283,7 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         
         
         newFrameLimit = 0
-//        print(newDx)
+
         
 //        coordinate += [oldX]
 //        coordinate[0].append(oldX)
@@ -286,15 +293,17 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
         if m == 1 {
             coordinateX += [newDx]
             coordinateY += [newDy]
-            print( (coordinateX[k]), (coordinateY[k]))
+//            print((k), (coordinateX[k]), (coordinateY[k]))
             k += 1
             m = 0
         }
         
         //線を描く
         line.frame = CGRect(x:0, y:0,width:0,height:0)
-        line.drawRect(lineWidth:1, startPointX: CGFloat(preX), startPointY: CGFloat(preY),endPointX: CGFloat(oldX),
-                      endPointY: CGFloat(oldY))
+//        line.drawRect(lineWidth:1, startPointX: CGFloat(preX), startPointY: CGFloat(preY),endPointX: CGFloat(oldX),
+//                      endPointY: CGFloat(oldY))
+        line.drawRect(lineWidth:1, startPointX: CGFloat(coordinateX[k]), startPointY: CGFloat(coordinateY[k]),endPointX: CGFloat(coordinateX[k+1]),
+                      endPointY: CGFloat(coordinateY[k+1]))
         self.view.layer.addSublayer(line)
 
         
@@ -327,10 +336,11 @@ class MapViewController: UIViewController, UITextFieldDelegate, UIGestureRecogni
             let oval = MyShapeLayer()
             oval.frame = CGRect(x:preX - 40,y:preY - 40,width:80,height:80)//新しい円フレームの設定
             oval.drawOval(lineWidth:1/*, startPointX: CGFloat(preX), startPointY: CGFloat(preY), endPointX: CGFloat(oldX), endPointY: CGFloat(oldY)*/)
-            // Labelを追加
-            self.view.addSubview(myLabel)
+
             frameAmount += 1
             self.view.layer.addSublayer(oval)//円フレームの追加
+            // Labelを追加
+            self.view.addSubview(myLabel)
             selectLayer = oval
             j=0
             m=1
