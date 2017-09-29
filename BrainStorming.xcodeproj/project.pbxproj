@@ -18,6 +18,7 @@
 		045730CE1EA5F16D00438415 /* BrainStormingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045730CD1EA5F16D00438415 /* BrainStormingUITests.swift */; };
 		04E053551EAC830A00452FE9 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E053541EAC830A00452FE9 /* startViewController.swift */; };
 		04E053571EAC8DBE00452FE9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E053561EAC8DBE00452FE9 /* MapViewController.swift */; };
+		04EA55B61ED01A2900D89038 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 04EA55B51ED01A2800D89038 /* icon.png */; };
 		04F6A5DE1EB6D1130099EF25 /* MyShapeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F6A5DD1EB6D1130099EF25 /* MyShapeLayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		045730CF1EA5F16D00438415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04E053541EAC830A00452FE9 /* startViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
 		04E053561EAC8DBE00452FE9 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		04EA55B51ED01A2800D89038 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
 		04F6A5DD1EB6D1130099EF25 /* MyShapeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyShapeLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 		045730AC1EA5F16D00438415 /* BrainStorming */ = {
 			isa = PBXGroup;
 			children = (
+				04EA55B51ED01A2800D89038 /* icon.png */,
 				045730AD1EA5F16D00438415 /* AppDelegate.swift */,
 				045730AF1EA5F16D00438415 /* ViewController.swift */,
 				045730B11EA5F16D00438415 /* Main.storyboard */,
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045730B81EA5F16D00438415 /* LaunchScreen.storyboard in Resources */,
+				04EA55B61ED01A2900D89038 /* icon.png in Resources */,
 				045730B51EA5F16D00438415 /* Assets.xcassets in Resources */,
 				045730B31EA5F16D00438415 /* Main.storyboard in Resources */,
 				0453832C1EB24A580073B522 /* se_maoudamashii_onepoint12.mp3 in Resources */,

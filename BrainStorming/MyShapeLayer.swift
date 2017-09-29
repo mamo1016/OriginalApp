@@ -8,7 +8,11 @@
 
 import UIKit
 
-
+let upperLimit: Float = 1.0
+let lowerLimit: Float = 0.0
+var redGain: Float = 0.0
+var greenGain: Float = 0.0
+var blueGain: Float = 0.0
 class MyShapeLayer: CALayer {
     
 //    //四角を描くメソッド
@@ -51,14 +55,21 @@ class MyShapeLayer: CALayer {
     //円を描くメソッド
     func drawOval(lineWidth:CGFloat/*,startPointX:CGFloat,startPointY:CGFloat,endPointX: CGFloat,endPointY:CGFloat*/){
         let ovalShapeLayer = CAShapeLayer()
-        ovalShapeLayer.strokeColor = UIColor.blue.cgColor
+        ovalShapeLayer.strokeColor = UIColor.white.cgColor
         ovalShapeLayer.fillColor = UIColor.clear.cgColor
         ovalShapeLayer.lineWidth = lineWidth
         ovalShapeLayer.path = UIBezierPath(ovalIn: CGRect(x:0, y:0, width:self.frame.width, height: self.frame.height)).cgPath
         self.addSublayer(ovalShapeLayer)
-        
-      
-        
+//
+        //0から9までの値を取得する
+        var random: Float = Float(arc4random_uniform(10))
+        print(random)
+        redGain = min(random/10, upperLimit) // なんかの計算＆上限値込み
+        random = Float(arc4random_uniform(10))
+        greenGain = min(random/10, upperLimit) // なんかの計算＆上限値込み
+        random = Float(arc4random_uniform(10))
+        blueGain = min(random/10, upperLimit) // なんかの計算＆上限値込み
+
         
         let pi = CGFloat(M_PI)
         let start:CGFloat = 0.0 // 開始の角度
@@ -66,13 +77,17 @@ class MyShapeLayer: CALayer {
         
         let path: UIBezierPath = UIBezierPath();
         //path.move(to: CGPoint(x:0, y:0))
-        path.addArc(withCenter: CGPoint(x:frame.width/2, y:frame.height/2), radius: 40, startAngle: start, endAngle: end, clockwise: true) // 円弧
+        path.addArc(withCenter: CGPoint(x:frame.width/2, y:frame.height/2), radius: 20, startAngle: start, endAngle: end, clockwise: true) // 円弧
         
         let layer = CAShapeLayer()
-        layer.fillColor = UIColor.orange.cgColor
+
+        
+        layer.fillColor =  UIColor(colorLiteralRed: redGain, green: greenGain, blue: blueGain, alpha: 1.0).cgColor
+        //layer.fillColor = UIColor.red.cgColor
         layer.path = path.cgPath
         
         self.addSublayer(layer)
+//        print(redGain)
 
         
         
